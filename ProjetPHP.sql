@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS seance_type
     aa VARCHAR(5),
     semaine INT,
     num INT,
+    date DATE,
     CONSTRAINT fk_seance_type_serie FOREIGN KEY (serie) REFERENCES series(num),
     CONSTRAINT fk_seance_type_bloc FOREIGN KEY (bloc) REFERENCES series(bloc),
     CONSTRAINT fk_seance_type_aa FOREIGN KEY (aa) REFERENCES ues_aas(code),
@@ -90,4 +91,11 @@ CREATE TABLE IF NOT EXISTS semaines
     num INT NOT NULL,
     lundi DATE,
     PRIMARY KEY(num)
+);
+
+CREATE TABLE IF NOT EXISTS presences
+(
+    etudant VARCHAR(32),
+    #seance pointe vers seance_type
+    presence CHARACTER #A=abscent P=present C=certificat
 );
