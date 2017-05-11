@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS professeurs
 (
     adr_mail VARCHAR(32) NOT NULL,
     nom VARCHAR(80),
+    prenom VARCHAR(32),
     rights VARCHAR(1),
     PRIMARY KEY(adr_mail)
 );
@@ -22,7 +23,7 @@ CREATE TABLE IF NOT EXISTS professeurs
 CREATE TABLE IF NOT EXISTS blocs
 (
     num INT NOT NULL,
-    nom VARCHAR(80),
+    nom VARCHAR(32),
     dep VARCHAR(16),
     resp VARCHAR(32),
     CONSTRAINT fk_blocs_resp FOREIGN KEY (resp) REFERENCES professeurs(adr_mail),
@@ -40,7 +41,8 @@ CREATE TABLE IF NOT EXISTS series
 CREATE TABLE IF NOT EXISTS etudiants
 (
     adr_mail VARCHAR(32) NOT NULL,
-    nom VARCHAR(80),
+    nom VARCHAR(32),
+    prenom VARCHAR(32),
     num_serie INT,
     num_bloc INT,
     CONSTRAINT fk_etudiants_num_serie FOREIGN KEY (num_serie) REFERENCES series(num),
