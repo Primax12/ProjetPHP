@@ -22,8 +22,7 @@ CREATE TABLE IF NOT EXISTS professeurs
 CREATE TABLE IF NOT EXISTS blocs
 (
     num INT NOT NULL,
-    nom VARCHAR(32),
-    prenom VARCHAR(32),
+    nom VARCHAR(80),
     dep VARCHAR(16),
     resp VARCHAR(32),
     CONSTRAINT fk_blocs_resp FOREIGN KEY (resp) REFERENCES professeurs(adr_mail),
@@ -41,8 +40,7 @@ CREATE TABLE IF NOT EXISTS series
 CREATE TABLE IF NOT EXISTS etudiants
 (
     adr_mail VARCHAR(32) NOT NULL,
-    nom VARCHAR(32),
-    prebom VARCHAR(32),
+    nom VARCHAR(80),
     num_serie INT,
     num_bloc INT,
     CONSTRAINT fk_etudiants_num_serie FOREIGN KEY (num_serie) REFERENCES series(num),
@@ -77,13 +75,11 @@ CREATE TABLE IF NOT EXISTS seance_type
     bloc INT,
     aa VARCHAR(5),
     semaine INT,
-    num INT,
-    date DATE,
     CONSTRAINT fk_seance_type_serie FOREIGN KEY (serie) REFERENCES series(num),
     CONSTRAINT fk_seance_type_bloc FOREIGN KEY (bloc) REFERENCES series(bloc),
     CONSTRAINT fk_seance_type_aa FOREIGN KEY (aa) REFERENCES ues_aas(code),
     CONSTRAINT fk_seance_type_semaine FOREIGN KEY (semaine) REFERENCES semaines(num),
-    CONSTRAINT pk_seance PRIMARY KEY(bloc,serie,aa,semaine,num)
+    CONSTRAINT pk_seance PRIMARY KEY(bloc,serie,aa,semaine)
 );
 
 CREATE TABLE IF NOT EXISTS semaines
@@ -91,11 +87,4 @@ CREATE TABLE IF NOT EXISTS semaines
     num INT NOT NULL,
     lundi DATE,
     PRIMARY KEY(num)
-);
-
-CREATE TABLE IF NOT EXISTS presences
-(
-    etudant VARCHAR(32),
-    #seance pointe vers seance_type
-    presence CHARACTER #A=abscent P=present C=certificat
 );
