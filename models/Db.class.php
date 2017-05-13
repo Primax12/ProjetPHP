@@ -31,7 +31,7 @@ class Db
 			$query = "SELECT * FROM etudiants WHERE adr_mail LIKE '".$login."'";
 			$result = $this->_db->query($query);
 			if ($result->rowcount()!=0) {
-				return 's';
+				return 'student';
 			}
 		} else {
 			# Parcourir les résultats dans $result 
@@ -49,6 +49,17 @@ class Db
 		$query="INSERT INTO semaines (lundi, num) VALUES ('".$date."',".$i.")";
 		$this->_db->prepare($query)->execute();
 	}
+
+	public function deleteProfs(){
+		$query='DELETE FROM professeurs';
+		$this->_db->prepare($query)->execute();
+	}
+	public function insertProf($adr_mail, $name, $rights){
+		$query="INSERT INTO professeurs (adr_mail, nom, rights) VALUES ('".$adr_mail."','".$name."','".$rights."')";
+		$this->_db->prepare($query)->execute();
+	}
+
+
 	
 	/*
 	# Fonction qui exécute un SELECT dans la table des livres 

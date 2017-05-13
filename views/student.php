@@ -4,7 +4,8 @@
 	</div>
 	
 	<div class="w3-container">
-		<h2>You are a STUDENT!!</h2>
+		<h2>Consulter vos presences</h2>
+			TODO
 	</div>
 
 </div>

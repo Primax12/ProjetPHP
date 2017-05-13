@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS professeurs
     adr_mail VARCHAR(32) NOT NULL,
     nom VARCHAR(80),
     prenom VARCHAR(32),
-    rights VARCHAR(1),
+    rights VARCHAR(16),
     PRIMARY KEY(adr_mail)
 );
 

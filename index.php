@@ -46,10 +46,27 @@
 			require_once('controllers/AgendaUploadController.php');
 			$controller = new AgendaUploadController();
 			break;
+		case 'profs':
+			require_once('controllers/ProfsUploadController.php');
+			$controller = new ProfsUploadController();
+			break;
+		case 'blocs':
+			require_once('controllers/BlocsController.php');
+			$controller = new BlocsController();
+			break;
+		case 'bloc':
+			require_once('controllers/BlocController.php');
+			$controller = new BlocController();
+			break;
 		case 'student':
 			require_once('controllers/StudentController.php');
 			$controller = new StudentController();
 			break;
+		case 'prof':
+			require_once('controllers/ProfController.php');
+			$controller = new ProfController();
+			break;
+
 		default: # Par défaut, le contrôleur de l'accueil est sélectionné
 			require_once('controllers/LoginController.php');	
 			$controller = new LoginController();
