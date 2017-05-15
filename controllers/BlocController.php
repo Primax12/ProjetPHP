@@ -10,7 +10,9 @@ class BlocController{
 		if (($_SESSION['rights']!='3')&&($_SESSION['rights']!='2')&&($_SESSION['rights']!='1')) {
 			header("Location: index.php?action=login"); # redirection HTTP vers l'action login
 			die(); 
-		}	
+		}
+		$ues=Db::getInstance()->getUEs();
+		
 		require_once(CHEMIN_VUES . 'bloc.php');
 	}
 	

@@ -13,7 +13,7 @@ class StudentUploadController{
 		if (! empty ( $_FILES ['student'] )) {
 
 			$origin = $_FILES ['student'] ['tmp_name'];
-			$destination = CONF_PATH . basename ( $_FILES ['student'] ['name'] );
+			$destination = 'uploads/'.basename ( $_FILES ['student'] ['name'] );
 			move_uploaded_file ( $origin, $destination );
 			$fcontents = file ( $destination ); 
 			Db::getInstance()->deleteStudents();

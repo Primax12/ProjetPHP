@@ -34,8 +34,15 @@ class ProfsUploadController{
 				Db::getInstance()->deleteProfs();
 				$handle = fopen($target_file, "r");
 				$row=fgetcsv($handle,0,';');
+				$i=0;
 				while($row!=false){
-					if($row[0]=='Mail')continue;
+					error_log($i);
+					if($i==0){
+						$row=fgetcsv($handle,0,';');
+						$i++;
+						continue;
+					}
+					$i++;
 					$adr_mail=$row[0];
 					$name=$row[1].' '.$row[2];
 					switch($row[3]){

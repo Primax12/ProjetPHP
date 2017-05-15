@@ -71,11 +71,25 @@ class Db
 		$this->_db->prepare($query)->execute();
 	}
 	public function insertUE($code, $nom, $ects, $abv, $quadri){
-		$query="INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES('".$code."','".$nom."','".$ects."','".$abv."','".$quadri."')";
+		$query="INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES(\"".$code."\",\"".$nom."\",\"".$ects."\",\"".$abv."\",\"".$quadri."\",\"".$_SESSION['bloc']."\")";
+		var_dump($query);
 		$this->_db->prepare($query)->execute();
 	}
 
-	
+	public function getUEs(){
+		
+		$query = "SELECT code FROM ues_aas WHERE bloc LIKE ".$_SESSION['bloc'];
+		$result = $this->_db->query($query);
+		//$result=$this->_db->prepare($query)->execute();
+		//$result = $this->_db->query($query);
+		$toReturn=array();
+		if($result->rowcount()!=0){
+			while($row=$result->fetch()){
+				$toReturn[]=$row->code;
+			}
+		}
+		return $toReturn;
+	}	
 	/*
 	# Fonction qui exécute un SELECT dans la table des livres 
 	# et qui renvoie un tableau d'objet(s) de la classe Livre
@@ -121,7 +135,6 @@ class Db
 
 	public function delete_livre($no) {
 		$query = 'DELETE FROM livres WHERE no='. $no .' LIMIT 1';
-		$this->_db->prepare($query)->execute();
-	}
+			}
 	*/
 }
