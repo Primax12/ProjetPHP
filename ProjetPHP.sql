@@ -90,3 +90,7 @@ CREATE TABLE IF NOT EXISTS semaines
     lundi DATE,
     PRIMARY KEY(num)
 );
+
+INSERT INTO blocs (num) VALUES ('1');
+INSERT INTO blocs (num) VALUES ('2');
+INSERT INTO blocs (num) VALUES ('3');
