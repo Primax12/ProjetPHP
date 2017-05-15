@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS etudiants
     num_serie INT,
     num_bloc INT,
     CONSTRAINT fk_etudiants_num_serie FOREIGN KEY (num_serie) REFERENCES series(num),
-    CONSTRAINT fk_etudiants_num_bloc FOREIGN KEY (num_bloc) REFERENCES series(bloc),
+    CONSTRAINT fk_etudiants_num_bloc FOREIGN KEY (num_bloc) REFERENCES blocs(num),
     PRIMARY KEY(adr_mail)
 );
 
