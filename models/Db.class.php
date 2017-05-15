@@ -58,7 +58,22 @@ class Db
 		$query="INSERT INTO professeurs (adr_mail, nom, rights) VALUES ('".$adr_mail."','".$name."','".$rights."')";
 		$this->_db->prepare($query)->execute();
 	}
-
+	public function deleteStudents(){
+		$query='DELETE FROM etudiants';
+		$this->_db->prepare($query)->execute();
+	}
+	public function addStudent($adr_mail, $name, $bloc){
+		$query="INSERT INTO etudiants (adr_mail, nom, num_bloc) SELECT \"".$adr_mail."\",\"".$name."\", num FROM blocs WHERE num = \"".$bloc."\"";
+		$this->_db->prepare($query)->execute();
+	}
+	public function deleteUE(){
+		$query='DELETE FROM ues_aas';
+		$this->_db->prepare($query)->execute();
+	}
+	public function insertUE($code, $nom, $ects, $abv, $quadri){
+		$query="INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES('".$code."','".$nom."','".$ects."','".$abv."','".$quadri."')";
+		$this->_db->prepare($query)->execute();
+	}
 
 	
 	/*

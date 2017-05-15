@@ -8,6 +8,12 @@
 		<h2>Manage your bloc</h2>
 		<h3>Introduction UE/AA</h3>
 			TODO
+		<form action="index.php?action=ueUpload" method="post" enctype="multipart/form-data">
+			<p>Fichier UE/AA:</p>
+			<input type="file" name="ue">
+			<input type="submit" value="Upload file" name="agenda_submit">
+		</form>
+
 		<h3>Creation Serie</h3>
 			TODO
 		<h3>Creation Seance Type</h3>

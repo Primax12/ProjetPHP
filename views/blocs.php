@@ -7,7 +7,12 @@
 	<div class="w3-container">
 		<h2>Manage your blocs</h2>
 		<h3>Introduction Etudiants</h3>
-			TODO
+		<form action="index.php?action=studentUpload" method="post" enctype="multipart/form-data">
+			<p>Fichier étudiant:</p>
+			<input type="file" name="student">
+			<input type="submit" value="Upload file" name="student_submit">
+		</form>
+
 		<h3>Nettoyage données annuelles</h3>
 			TODO
 

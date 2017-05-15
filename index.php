@@ -66,6 +66,16 @@
 			require_once('controllers/ProfController.php');
 			$controller = new ProfController();
 			break;
+		case 'studentUpload':
+			require_once('controllers/StudentUploadController.php');
+			$controller = new StudentUploadController();
+			break;
+		case 'ueUpload':
+			require_once('controllers/UEUploadController.php');
+			$controller = new UEUploadController();
+			break;
+
+
 
 		default: # Par défaut, le contrôleur de l'accueil est sélectionné
 			require_once('controllers/LoginController.php');	
