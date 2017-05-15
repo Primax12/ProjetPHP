@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS seance_type
     CONSTRAINT fk_seance_type_serie FOREIGN KEY (serie) REFERENCES series(num),
     CONSTRAINT fk_seance_type_aa FOREIGN KEY (aa) REFERENCES ues_aas(code),
     CONSTRAINT fk_seance_type_semaine FOREIGN KEY (semaine) REFERENCES semaines(num),
-    CONSTRAINT pk_seance PRIMARY KEY(bloc,serie,aa,semaine)
+    CONSTRAINT pk_seance PRIMARY KEY(serie,aa,semaine)
 );
 
 CREATE TABLE IF NOT EXISTS semaines
