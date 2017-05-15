@@ -57,8 +57,6 @@ CREATE TABLE IF NOT EXISTS ues_aas
     ects INT,
     abv VARCHAR(16),
     quadri INT,
-    bloc INT,
-    CONSTRAINT fk_ues_aas_bloc FOREIGN KEY (bloc) REFERENCES blocs(num),
     PRIMARY KEY(code)
 );
 
