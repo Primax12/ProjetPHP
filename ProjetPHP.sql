@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS etudiants
     num_serie INT,
     num_bloc INT,
     CONSTRAINT fk_etudiants_num_serie FOREIGN KEY (num_serie) REFERENCES series(num),
-    CONSTRAINT fk_etudiants_num_bloc FOREIGN KEY (num_bloc) REFERENCES series(bloc),
+    CONSTRAINT fk_etudiants_num_bloc FOREIGN KEY (num_bloc) REFERENCES blocs(num),
     PRIMARY KEY(adr_mail)
 );
 
@@ -57,8 +57,6 @@ CREATE TABLE IF NOT EXISTS ues_aas
     ects INT,
     abv VARCHAR(16),
     quadri INT,
-    bloc INT,
-    CONSTRAINT fk_ues_aas_bloc FOREIGN KEY (bloc) REFERENCES blocs(num),
     PRIMARY KEY(code)
 );
 
@@ -74,14 +72,13 @@ CREATE TABLE IF NOT EXISTS ue_aa_prof
 CREATE TABLE IF NOT EXISTS seance_type
 (
     serie INT,
-    bloc INT,
+    num INT,
     aa VARCHAR(5),
     semaine INT,
     CONSTRAINT fk_seance_type_serie FOREIGN KEY (serie) REFERENCES series(num),
-    CONSTRAINT fk_seance_type_bloc FOREIGN KEY (bloc) REFERENCES series(bloc),
     CONSTRAINT fk_seance_type_aa FOREIGN KEY (aa) REFERENCES ues_aas(code),
     CONSTRAINT fk_seance_type_semaine FOREIGN KEY (semaine) REFERENCES semaines(num),
-    CONSTRAINT pk_seance PRIMARY KEY(bloc,serie,aa,semaine)
+    CONSTRAINT pk_seance PRIMARY KEY(serie,aa,semaine)
 );
 
 CREATE TABLE IF NOT EXISTS semaines
@@ -90,3 +87,7 @@ CREATE TABLE IF NOT EXISTS semaines
     lundi DATE,
     PRIMARY KEY(num)
 );
+
+INSERT INTO blocs (num) VALUES ('1');
+INSERT INTO blocs (num) VALUES ('2');
+INSERT INTO blocs (num) VALUES ('3');
