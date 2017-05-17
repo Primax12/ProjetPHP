@@ -22,7 +22,7 @@ class UEUploadController{
 			#skip the fisrt line on the csv
 			if ($i != 0){
 				preg_match('/(.*);(.*);(.*);(.*);(.*);(.*)/',$icontent,$result);
-				var_dump($result);
+				//var_dump($result);
 				$mne=$result[2];
 				$nom=$result[1];
 				$ects=$result[5];

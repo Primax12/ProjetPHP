@@ -75,6 +75,10 @@
 			$controller = new UEUploadController();
 			break;
 
+		case 'insertPresences':
+			require_once('controllers/InsertPresencesController.php');
+			$controller = new InsertPresencesController();
+			break;
 
 
 		default: # Par défaut, le contrôleur de l'accueil est sélectionné

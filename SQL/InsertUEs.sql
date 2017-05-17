@@ -1,0 +1,16 @@
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1010","Algorithmique","6","Algo ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1020","Analyse et Programmation Orientée Objet","5","APOO ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1030","Analyse et Architecture des Données","5","Ianarch ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1040","Structures de Données","6","SD ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1050","Programmation Web : Bases","5","Web 1 ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1060","Introduction aux Systèmes d'Exploitation","5","OS 1 ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I106A","Théorie des systèmes d’exploitation","2,5","OS (Th) ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I106B","Introduction à Linux","2,5","Linux ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1070","Fonctionnement des Ordinateurs","6","FO ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1080","L’Entreprise et ses Relations avec le Monde Economique","5"," ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I108A","Comptabilité","3","Comptabilité ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I108B","Economie et Fonctionnement de l'entreprise","3","Economie ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1090","Mathématiques 1 : Outils Fondamentaux","4","Math 1 ","1","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1100","Mathématiques 2 : Structures Avancées","6","Math 2 ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1110","Projet de Développement Web","3","Projet Web ","2","1");
+INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES("I1120","Anglais 1","4","Anglais 1 ","2","1");

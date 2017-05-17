@@ -64,6 +64,7 @@ class Db
 	}
 	public function addStudent($adr_mail, $name, $bloc){
 		$query="INSERT INTO etudiants (adr_mail, nom, num_bloc) SELECT \"".$adr_mail."\",\"".$name."\", num FROM blocs WHERE num = \"".$bloc."\"";
+		echo($query.';<br>');
 		$this->_db->prepare($query)->execute();
 	}
 	public function deleteUE(){
@@ -72,7 +73,6 @@ class Db
 	}
 	public function insertUE($code, $nom, $ects, $abv, $quadri){
 		$query="INSERT INTO ues_aas (code, nom, ects, abv, quadri, bloc) VALUES(\"".$code."\",\"".$nom."\",\"".$ects."\",\"".$abv."\",\"".$quadri."\",\"".$_SESSION['bloc']."\")";
-		var_dump($query);
 		$this->_db->prepare($query)->execute();
 	}
 
@@ -90,6 +90,64 @@ class Db
 		}
 		return $toReturn;
 	}	
+	public function getSems(){
+		$query = "SELECT num FROM semaines";
+		$result = $this->_db->query($query);
+		//$result=$this->_db->prepare($query)->execute();
+		//$result = $this->_db->query($query);
+		$toReturn=array();
+		if($result->rowcount()!=0){
+			while($row=$result->fetch()){
+				$toReturn[]=$row->num;
+			}
+		}
+		return $toReturn;
+	}	
+	public function getSeries(){
+		$query = "SELECT num, bloc FROM series";
+		$result = $this->_db->query($query);
+		//$result=$this->_db->prepare($query)->execute();
+		//$result = $this->_db->query($query);
+		$toReturn=array();
+		if($result->rowcount()!=0){
+			while($row=$result->fetch()){
+				$toReturn[]=$row->bloc.'-'.$row->num;
+			}
+		}
+		return $toReturn;
+	}	
+
+	public function getStudentFromSerie($bloc, $serie){
+		$query = "SELECT nom FROM etudiants WHERE num_bloc=".$bloc." AND num_serie=".$serie.";";
+		$result = $this->_db->query($query);
+		$toReturn=array();
+		if($result->rowcount()!=0){
+			while($row=$result->fetch()){
+				$toReturn[]=$row->nom;
+			}
+		}
+		return $toReturn;
+
+	}
+	
+	public function insertPresence($nom, $code, $sem, $num){
+		$query = "INSERT INTO presences(etudiant,aa,semaine,num) SELECT etudiants.adr_mail, ues_aas.code, semaines.num, ".$num." FROM etudiants, ues_aas, semaines WHERE etudiants.nom LIKE '".$nom."' AND ues_aas.code LIKE '".$code."' AND semaines.num=".$sem; 
+		//$query="INSERT INTO presences (etudiant, aa, semaine, num) VALUES(\"".$code."\",\"".$nom."\",\"".$ects."\",\"".$abv."\",\"".$quadri."\",\"".$_SESSION['bloc']."\")";
+		$this->_db->prepare($query)->execute();
+	}
+	public function getPresences($code, $sem, $num, $serie){
+		$query = "SELECT etudiants.nom FROM etudiants, presences WHERE etudiants.adr_mail=presences.etudiant AND etudiants.num_serie=".$serie." AND presences.aa LIKE '".$code."' AND presences.semaine=".$sem." AND presences.num=".$num; 
+		//$query="INSERT INTO presences (etudiant, aa, semaine, num) VALUES(\"".$code."\",\"".$nom."\",\"".$ects."\",\"".$abv."\",\"".$quadri."\",\"".$_SESSION['bloc']."\")";
+		$result = $this->_db->query($query);
+		$toReturn=array();
+		if($result->rowcount()!=0){
+			while($row=$result->fetch()){
+				$toReturn[]=$row->nom;
+			}
+		}
+		return $toReturn;
+	}
+
 	/*
 	# Fonction qui exécute un SELECT dans la table des livres 
 	# et qui renvoie un tableau d'objet(s) de la classe Livre
